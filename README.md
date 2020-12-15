@@ -17,7 +17,7 @@ node.js
 
 Step 1) Download and extract the folder from this .zip file
 
-Step 2) Go to https://nodejs.org/en/download/ and download Node.js LTS for Windows
+Step 2) Go to https://nodejs.org/en/download/ and download and install Node.js LTS for Windows using nodes instructions
 
 Step 3) Run the .bat file labeled "install_and_run.bat" and wait for it to finish installing the node modules
 
@@ -31,7 +31,7 @@ Step 6) Follow the prompts in your CMD and start the generator!
 
 Step 1) Download and extract the folder from this .zip file
 
-Step 2) Go to https://nodejs.org/en/download/ and download Node.js LTS for whichever OS you are using
+Step 2) Go to https://nodejs.org/en/download/ and download Node.js LTS for whichever OS you are using then install it with nodes instructions
 
 Step 3) Please open terminal and cd to this folder then type "npm i" or right click on this folder and select "New terminal at folder" and wait for it to finish installing the node modules
 
