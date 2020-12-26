@@ -46,7 +46,7 @@ Step 6) Follow the prompts in your terminal and start the generator!
 
 See the [open issues](https://github.com/therealtear/discord-nitro-generator/issues) for a list of proposed features (and known issues).
 
-## Proof Of Concept
+## Proof Of Concept (Running generator for 24 hours straight)
 
 ![Here](image0.png)
 
