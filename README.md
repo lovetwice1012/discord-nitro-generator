@@ -49,7 +49,7 @@ See the [open issues](https://github.com/therealtear/discord-nitro-generator/iss
 ## Proof Of Concept (Running generator for 24 hours straight)
 
 ![Here](image0.png)
-
+![Here](image1.jpeg)
 
 ## License
 
