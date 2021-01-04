@@ -1,7 +1,7 @@
 {
     "name": "tears-nitro-genrator",
-    "version": "4.2.0",
-    "description": "Tear's nitro generator for inquieries please message me on discord: Tear#1261 or join the support server discord.gg/ma9szz9",
+    "version": "1.2.0",
+    "description": "Tear's nitro generator for inquiries please message me on discord: tear#9999 or join the support server discord.link/s",
     "main": "app.js",
     "scripts": {
         "start": "node app.js"
@@ -9,11 +9,12 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "request": "",
-        "colors": "",
-        "figlet": "",
         "console-menu": "",
+        "figlet": "",
         "line-reader": "",
+        "node-fetch": "",
+        "request": "",
+        "requests": "",
         "terminal-kit": ""
     },
     "repository": {
