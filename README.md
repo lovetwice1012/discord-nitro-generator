@@ -13,6 +13,10 @@ To get a local copy up and running follow these simple steps.
 
 node.js
 
+### Changelog
+
+Added a second branch for testing new ideas won't always be working
+
 ### Installation on Windows
 
 Step 1) Download and extract the folder from this .zip file
