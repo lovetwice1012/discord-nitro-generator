@@ -134,6 +134,7 @@ function runquestion() {
                 no: ["n"]
             }, function(error, result) {
                 if (result) {
+                    term.cyan("Now using proxies...\n");
 
                     var progressBar, progress = 0;
 
@@ -214,7 +215,7 @@ function runquestion() {
 
                             console.clear();
                             setTimeout(function() {
-                                term.cyan("Now using proxies...\n");
+
                                 term.green("-------------------------------------\n");
                                 term.brightCyan("Made by: tear#9999\n");
                             }, 2000);
@@ -279,7 +280,6 @@ function runquestion() {
 
 function main() {
     runquestion()
-    proxyquestion()
 }
 
 main()
