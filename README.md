@@ -15,6 +15,9 @@ node.js
 
 ### Changelog
 
+Merged beta testing branch
+Added looping and scraper that works half the time lol
+Added Non-proxied request option in menu
 Added a second branch for testing new ideas won't always be working
 
 ### Installation on Windows
@@ -64,7 +67,7 @@ If you have any issues or questions please contact me at tear@crime.su or on Dis
 
 Email: tear@crime.su
 
-Discord: tear#1011
+Discord: tear#9999
 
 Project Link: [https://github.com/therealtear/discord-nitro-generator/](https://github.com/therealtear/discord-nitro-generator/)
 
