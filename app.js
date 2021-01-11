@@ -1,6 +1,7 @@
 const request = require("request");
 const fs = require("fs");
 const figlet = require("figlet");
+const colors = require("colors");
 const fetch = require("node-fetch");
 const lineReader = require('line-reader');
 const proxies = __dirname + "/proxies.txt";
