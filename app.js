@@ -9,9 +9,9 @@ var term = require("terminal-kit").terminal;
 var proxyLine = 0;
 var proxyUrl = "";
 var working = [];
-var version = "v1.2.0.0.0"
+var version = "v1.2.2.0.0"
     // highest rate possible before the stress errors will start to occur
-const triesPerSecond = 1;
+const triesPerSecond = 400;
 
 console.clear();
 console.log(figlet.textSync("Nitro Gen").green);
@@ -39,7 +39,7 @@ async function updateLine() {
         if (last) {
             // scrape proxies if none are detected
             readLine = 0;
-            term.cyan("No proxies detected now scrapping...\n");
+            // term.cyan("No proxies detected now scrapping...\n");
             if (proxyUrl === `http://${line}`) {
                 (async() => {
                     await fetch("https://api.proxyscrape.com/?request=displayproxies&proxytype=http&timeout=7000&country=all&anonymity=all&ssl=yes").then(async res => {
@@ -59,7 +59,7 @@ checkCode = function(code) {
     var proxiedRequest = request.defaults({
         'proxy': proxyUrl
     });
-    proxiedRequest.timeout = 1500;
+    proxiedRequest.timeout = 2000;
     proxiedRequest.get(`https://discordapp.com/api/v6/entitlements/gift-codes/${code}?with_application=false&with_subscription_plan=true`, (error, resp, body) => {
         if (error) {
             term.brightYellow("Invalid proxy switching now...\n");
@@ -88,7 +88,7 @@ checkCode = function(code) {
     });
 }
 checkCodeOffline = function(code) {
-    request(`https://discordapp.com/api/v6/entitlements/gift-codes/${code}?with_application=false&with_subscription_plan=true`, (error, res, body) => {
+    request.get(`https://discordapp.com/api/v6/entitlements/gift-codes/${code}?with_application=false&with_subscription_plan=true`, (error, res, body) => {
         if (error) {
             term.gray("An error occurred:\n");
             term.gray(error + "\n");
