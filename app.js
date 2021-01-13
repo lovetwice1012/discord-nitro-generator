@@ -88,203 +88,203 @@ checkCode = function(code) {
     });
 }
 checkCodeOffline = function(code) {
-        request(`https://discordapp.com/api/v6/entitlements/gift-codes/${code}?with_application=false&with_subscription_plan=true`, (error, res, body) => {
-                if (error) {
-                    term.gray("An error occurred:\n");
-                    term.gray(error + "\n");
-                    return;
-                }
-                try {
-                    body = JSON.parse(body);
-                    if (body.message != "Unknown Gift Code" && body.message != "You are being rate limited." && body.code == 200) {
-                        term.brightGreen(`This code should work unless an error is posted below! https://discord.gift/${code}\n`);
-                        console.log(JSON.stringify(body, null, 4));
-                        working.push(`https://discord.gift/${code}`);
-                        fs.writeFileSync(__dirname + '/codes.json', JSON.stringify(working, null, 4));
-
-                    } else {
-                        term.brightRed(`discord.com/gifts/${code} is an invalid code!\n`);
-                    } else if (body.message === "You are being rate limited.\n") {
-                        term.brightYellow("You are being rate limited!");
-                    } catch (error) {
-                        term.gray("An error occurred:\n");
-                        term.gray(error + "\n");
-                        return;
-                    }
-                });
+    request(`https://discordapp.com/api/v6/entitlements/gift-codes/${code}?with_application=false&with_subscription_plan=true`, (error, res, body) => {
+        if (error) {
+            term.gray("An error occurred:\n");
+            term.gray(error + "\n");
+            return;
         }
+        try {
+            body = JSON.parse(body);
+            if (body.message != "Unknown Gift Code" && body.message != "You are being rate limited." && body.code == 200) {
+                term.brightGreen(`This code should work unless an error is posted below! https://discord.gift/${code}\n`);
+                console.log(JSON.stringify(body, null, 4));
+                working.push(`https://discord.gift/${code}`);
+                fs.writeFileSync(__dirname + '/codes.json', JSON.stringify(working, null, 4));
+            } else if (body.message === "You are being rate limited.\n") {
+                term.brightYellow("You are being rate limited!");
+            } else {
+                term.brightRed(`discord.com/gifts/${code} is an invalid code!\n`);
+            }
+        } catch (error) {
+            term.gray("An error occurred:\n");
+            term.gray(error + "\n");
+            return;
+        }
+    });
+}
 
 
-        function runquestion() {
+function runquestion() {
+    term.brightYellow(
+        "Would you like to run Tear's nitro generator? [Y|N]\n"
+    );
+
+    term.yesOrNo({
+        yes: ["y", "ENTER"],
+        no: ["n"]
+    }, function(error, result) {
+
+
+        if (result) {
             term.brightYellow(
-                "Would you like to run Tear's nitro generator? [Y|N]\n"
+                "Would you like you to emable the use of proxy's? [Y|N]\n"
             );
 
             term.yesOrNo({
                 yes: ["y", "ENTER"],
                 no: ["n"]
             }, function(error, result) {
-
-
                 if (result) {
-                    term.brightYellow(
-                        "Would you like you to emable the use of proxy's? [Y|N]\n"
-                    );
+                    term.cyan("Now using proxies...\n");
 
-                    term.yesOrNo({
-                        yes: ["y", "ENTER"],
-                        no: ["n"]
-                    }, function(error, result) {
-                        if (result) {
-                            term.cyan("Now using proxies...\n");
-
-                            var progressBar, progress = 0;
+                    var progressBar, progress = 0;
 
 
-                            function doProgress() {
+                    function doProgress() {
 
-                                // Add random progress
-                                progress += Math.random() / 10;
-                                progressBar.update(progress);
+                        // Add random progress
+                        progress += Math.random() / 10;
+                        progressBar.update(progress);
 
-                                if (progress >= 1) {
+                        if (progress >= 1) {
 
-                                    console.clear();
-                                    setTimeout(function() {
-                                        term.cyan("Now using proxies...\n");
-                                        term.green("-------------------------------------\n");
-                                        term.brightCyan("Made by: tear#9999\n");
-                                    }, 2000);
-                                    setTimeout(function() {
-                                        term.brightCyan(
-                                            "If you payed for this generator you got scammed lmao\n"
-                                        );
-                                    }, 4000);
-                                    setTimeout(function() {
-                                        term.brightCyan(
-                                            "Takes a really long time to find a working code\n"
-                                        );
-                                    }, 6000);
-                                    setTimeout(function() {
-                                        term.brightCyan("Press 'N' to stop the generator at any time\n");
-                                    }, 8000);
-                                    setTimeout(function() {
-                                        term.brightCyan("Enjoy :)\n");
-                                    }, 10000);
+                            console.clear();
+                            setTimeout(function() {
+                                term.cyan("Now using proxies...\n");
+                                term.green("-------------------------------------\n");
+                                term.brightCyan("Made by: tear#9999\n");
+                            }, 2000);
+                            setTimeout(function() {
+                                term.brightCyan(
+                                    "If you payed for this generator you got scammed lmao\n"
+                                );
+                            }, 4000);
+                            setTimeout(function() {
+                                term.brightCyan(
+                                    "Takes a really long time to find a working code\n"
+                                );
+                            }, 6000);
+                            setTimeout(function() {
+                                term.brightCyan("Press 'N' to stop the generator at any time\n");
+                            }, 8000);
+                            setTimeout(function() {
+                                term.brightCyan("Enjoy :)\n");
+                            }, 10000);
 
-                                    term.green("-------------------------------------\n");
-                                    term.green(`Discord nitro giftcard generater ${version} \n`);
-                                    term.green(`Checking a code every ${1 / triesPerSecond} second(s)\n`);
+                            term.green("-------------------------------------\n");
+                            term.green(`Discord nitro giftcard generater ${version} \n`);
+                            term.green(`Checking a code every ${1 / triesPerSecond} second(s)\n`);
 
-                                    setTimeout(function() {
+                            setTimeout(function() {
 
-                                        setInterval(() => {
-                                            checkCode(generatecode());
-                                        }, (1 / triesPerSecond) * 250);
-                                    }, 12000);
-
-                                } else {
-                                    setTimeout(doProgress, 100 + Math.random() * 400);
-                                }
-                            }
-
-
-                            progressBar = term.progressBar({
-                                width: 80,
-                                title: "Starting generator....",
-                                eta: true,
-                                percent: true
-                            });
-
-                            doProgress();
-
-
+                                setInterval(() => {
+                                    checkCode(generatecode());
+                                }, (1 / triesPerSecond) * 250);
+                            }, 12000);
 
                         } else {
-                            term.red("'No' detected, not using proxies...\n");
-
-
-                            var progressBar, progress = 0;
-
-
-                            function doProgress() {
-
-                                // Add random progress
-                                progress += Math.random() / 10;
-                                progressBar.update(progress);
-
-                                if (progress >= 1) {
-
-                                    console.clear();
-                                    setTimeout(function() {
-
-                                        term.green("-------------------------------------\n");
-                                        term.brightCyan("Made by: tear#9999\n");
-                                    }, 2000);
-                                    setTimeout(function() {
-                                        term.brightCyan(
-                                            "If you payed for this generator you got scammed lmao\n"
-                                        );
-                                    }, 4000);
-                                    setTimeout(function() {
-                                        term.brightCyan(
-                                            "Takes a really long time to find a working code\n"
-                                        );
-                                    }, 6000);
-                                    setTimeout(function() {
-                                        term.brightCyan("Press 'N' to stop the generator at any time\n");
-                                    }, 8000);
-                                    setTimeout(function() {
-                                        term.brightCyan("Enjoy :)\n");
-                                    }, 10000);
-
-                                    term.green("-------------------------------------\n");
-                                    term.green(`Discord nitro giftcard generater ${version} \n`);
-                                    term.green(`Checking a code every ${12 / triesPerSecond} second(s)\n`);
-
-                                    setTimeout(function() {
-
-                                        setInterval(() => {
-                                            checkCodeOffline(generatecode());
-                                        }, (12 / triesPerSecond) * 1000);
-                                    }, 12000);
-
-                                } else {
-                                    setTimeout(doProgress, 100 + Math.random() * 400);
-                                }
-                            }
-
-
-                            progressBar = term.progressBar({
-                                width: 80,
-                                title: "Starting generator....",
-                                eta: true,
-                                percent: true
-                            });
-
-                            doProgress();
-
-
+                            setTimeout(doProgress, 100 + Math.random() * 400);
                         }
+                    }
+
+
+                    progressBar = term.progressBar({
+                        width: 80,
+                        title: "Starting generator....",
+                        eta: true,
+                        percent: true
                     });
 
-
+                    doProgress();
 
 
 
                 } else {
-                    term.red("'No' detected, now quitting generator...\n");
-                    process.exit();
+                    term.red("'No' detected, not using proxies...\n");
+
+
+                    var progressBar, progress = 0;
+
+
+                    function doProgress() {
+
+                        // Add random progress
+                        progress += Math.random() / 10;
+                        progressBar.update(progress);
+
+                        if (progress >= 1) {
+
+                            console.clear();
+                            setTimeout(function() {
+
+                                term.green("-------------------------------------\n");
+                                term.brightCyan("Made by: tear#9999\n");
+                            }, 2000);
+                            setTimeout(function() {
+                                term.brightCyan(
+                                    "If you payed for this generator you got scammed lmao\n"
+                                );
+                            }, 4000);
+                            setTimeout(function() {
+                                term.brightCyan(
+                                    "Takes a really long time to find a working code\n"
+                                );
+                            }, 6000);
+                            setTimeout(function() {
+                                term.brightCyan("Press 'N' to stop the generator at any time\n");
+                            }, 8000);
+                            setTimeout(function() {
+                                term.brightCyan("Enjoy :)\n");
+                            }, 10000);
+
+                            term.green("-------------------------------------\n");
+                            term.green(`Discord nitro giftcard generater ${version} \n`);
+                            term.green(`Checking a code every ${12 / triesPerSecond} second(s)\n`);
+
+                            setTimeout(function() {
+
+                                setInterval(() => {
+                                    checkCodeOffline(generatecode());
+                                }, (12 / triesPerSecond) * 1000);
+                            }, 12000);
+
+                        } else {
+                            setTimeout(doProgress, 100 + Math.random() * 400);
+                        }
+                    }
+
+
+                    progressBar = term.progressBar({
+                        width: 80,
+                        title: "Starting generator....",
+                        eta: true,
+                        percent: true
+                    });
+
+                    doProgress();
+
+
                 }
             });
+
+
+
+
+
+        } else {
+            term.red("'No' detected, now quitting generator...\n");
+            process.exit();
         }
+    });
+}
 
 
-        function main() {
-            runquestion()
-        }
+function main() {
+    runquestion()
+}
 
-        main()
+main()
 
-        // made by tear
-        // https://github.com/therealtear
+// made by tear
+// https://github.com/therealtear
