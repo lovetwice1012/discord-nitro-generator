@@ -15,13 +15,9 @@ node.js
 
 ### Changelog
 
-Merged beta testing branch
+Changed to status codes
 
-Added looping and scraper that works half the time lol
-
-Added Non-proxied request option in menu
-
-Added a second branch for testing new ideas won't always be working
+Added error handling
 
 ### Installation on Windows
 
