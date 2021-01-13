@@ -61,7 +61,6 @@ checkCode = function(code) {
     });
     proxiedRequest.timeout = 1500;
     proxiedRequest.get(`https://discordapp.com/api/v6/entitlements/gift-codes/${code}?with_application=false&with_subscription_plan=true`, (error, resp, body) => {
-        body = JSON.parse(body);
         if (error) {
             term.brightYellow("Invalid proxy switching now...\n");
             updateLine();
@@ -89,7 +88,6 @@ checkCode = function(code) {
 }
 checkCodeOffline = function(code) {
     request(`https://discordapp.com/api/v6/entitlements/gift-codes/${code}?with_application=false&with_subscription_plan=true`, (error, res, body) => {
-        body = JSON.parse(body);
         if (error) {
             term.gray("An error occurred:\n");
             term.gray(error + "\n");
@@ -128,7 +126,7 @@ function main() {
 
         if (result) {
             term.brightYellow(
-                "Would you like you to emable the use of proxy's? [Y|N]\n"
+                "Would you like you to enable the use of proxy's? [Y|N]\n"
             );
 
             term.yesOrNo({
