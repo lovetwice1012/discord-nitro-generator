@@ -61,19 +61,19 @@ checkCode = function(code) {
     });
     proxiedRequest.timeout = 1500;
     proxiedRequest.get(`https://discordapp.com/api/v6/entitlements/gift-codes/${code}?with_application=false&with_subscription_plan=true`, (error, resp, body) => {
+        body = JSON.parse(body);
         if (error) {
             term.brightYellow("Invalid proxy switching now...\n");
             updateLine();
             return;
         }
         try {
-            body = JSON.parse(body);
-            if (body.message != "Unknown Gift Code" && body.message != "You are being rate limited." && body.code == 200) {
+            if (body.code == 200) {
                 term.brightGreen(`This code should work unless an error is posted below! https://discord.gift/${code}\n`);
                 console.log(JSON.stringify(body, null, 4));
                 working.push(`https://discord.gift/${code}`);
                 fs.writeFileSync(__dirname + '/codes.json', JSON.stringify(working, null, 4));
-            } else if (body.message === "You are being rate limited.\n") {
+            } else if (body.code == 429) {
                 updateLine();
                 term.brightYellow("Your being rate limited! switching...\n");
 
@@ -89,19 +89,19 @@ checkCode = function(code) {
 }
 checkCodeOffline = function(code) {
     request(`https://discordapp.com/api/v6/entitlements/gift-codes/${code}?with_application=false&with_subscription_plan=true`, (error, res, body) => {
+        body = JSON.parse(body);
         if (error) {
             term.gray("An error occurred:\n");
             term.gray(error + "\n");
             return;
         }
         try {
-            body = JSON.parse(body);
-            if (body.message != "Unknown Gift Code" && body.message != "You are being rate limited." && body.code == 200) {
+            if (body.code == 200) {
                 term.brightGreen(`This code should work unless an error is posted below! https://discord.gift/${code}\n`);
                 console.log(JSON.stringify(body, null, 4));
                 working.push(`https://discord.gift/${code}`);
                 fs.writeFileSync(__dirname + '/codes.json', JSON.stringify(working, null, 4));
-            } else if (body.message === "You are being rate limited.\n") {
+            } else if (body.code == 429) {
                 term.brightYellow("You are being rate limited!");
             } else {
                 term.brightRed(`discord.com/gifts/${code} is an invalid code!\n`);
@@ -115,7 +115,7 @@ checkCodeOffline = function(code) {
 }
 
 
-function runquestion() {
+function main() {
     term.brightYellow(
         "Would you like to run Tear's nitro generator? [Y|N]\n"
     );
@@ -279,12 +279,12 @@ function runquestion() {
     });
 }
 
-
-function main() {
-    runquestion()
-}
-
 main()
+process.on('uncaughtException', function(err) {
+    term.gray("An error occurred:\n");
+    term.gray(err + "\n");
+});
+
 
 // made by tear
 // https://github.com/therealtear
