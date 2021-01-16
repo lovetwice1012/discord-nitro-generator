@@ -62,7 +62,7 @@ See the [open issues](https://github.com/therealtear/discord-nitro-generator/iss
 See `Software License Agreement.txt` for more information.
 
 ## Contact
-If you have any issues or questions please contact me at tear@crime.su or on Discord at tear#1011
+If you have any issues or questions please contact me at tear@crime.su or on Discord at tear#9999
 
 Email: tear@crime.su
 
