@@ -9,7 +9,7 @@ var term = require("terminal-kit").terminal;
 var proxyLine = 0;
 var proxyUrl = "";
 var working = [];
-var version = "v1.2.0.0.0"
+var version = "v1.2.4.0.0"
     // highest rate possible before the stress errors will start to occur
 const triesPerSecond = 1;
 
