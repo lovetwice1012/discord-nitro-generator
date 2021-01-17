@@ -15,9 +15,11 @@ node.js
 
 ### Changelog
 
-General life clarity improvements in all files + new issues thread
+Full detailed changelog can be viewed [here](https://github.com/therealtear/discord-nitro-generator/issues/25) latest changes will be listed below:
 
-Added option to autostop the program after finding a working code
++ General life clarity improvements in all files + new issues thread
+
++ Added option to autostop the program after finding a working code
 
 
 
