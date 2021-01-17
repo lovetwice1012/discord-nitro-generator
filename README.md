@@ -15,9 +15,11 @@ node.js
 
 ### Changelog
 
-Changed to status codes
+General life clarity improments in all files + new issues thread
 
-Added error handling
+Added option to autostop the program after finding a working code
+
+
 
 ### Installation on Windows
 
