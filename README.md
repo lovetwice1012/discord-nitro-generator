@@ -15,7 +15,7 @@ node.js
 
 ### Changelog
 
-General life clarity improments in all files + new issues thread
+General life clarity improvements in all files + new issues thread
 
 Added option to autostop the program after finding a working code
 
