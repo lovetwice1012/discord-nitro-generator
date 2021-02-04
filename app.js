@@ -1,15 +1,15 @@
 const request = require("request");
 const fs = require("fs");
 const figlet = require("figlet");
-const colors = require("colors");
 const fetch = require("node-fetch");
 const lineReader = require('line-reader');
 const proxies = __dirname + "/proxies.txt";
+require("colors");
 var term = require("terminal-kit").terminal;
 var proxyLine = 0;
 var proxyUrl = "";
 var working = [];
-var version = "v1.3.0"
+var version = "v1.3.2"
 var toMatch;
 // highest rate possible before the stress errors will start to occur
 const triesPerSecond = 1;
@@ -40,9 +40,10 @@ async function updateLine() {
         if (last) {
             // scrape proxies if none are detected
             readLine = 0;
-            term.cyan("No proxies detected now scrapping...\n");
             if (proxyUrl === `http://${line}`) {
+
                 (async() => {
+                    term.cyan("No proxies detected now scrapping...\n");
                     await fetch("https://api.proxyscrape.com/?request=displayproxies&proxytype=http&timeout=7000&country=all&anonymity=all&ssl=yes").then(async res => {
                         const body = (await res.text());
                         fs.writeFileSync(__dirname + "/proxies.txt", body);
@@ -57,7 +58,7 @@ async function updateLine() {
 updateLine();
 // requests api checks in order using proxies instead of all at the same time 
 // because it would be the exact same waiting time plus more stress with many requests at the same time possibly causing an error
-// also chnaged body requests to no longer parse body data and just use status codes instead
+// also changed body requests to no longer parse body data and just use status codes instead
 checkCode = function(code) {
     var proxiedRequest = request.defaults({
         'proxy': proxyUrl
@@ -327,7 +328,7 @@ function main() {
 
                                     console.clear();
                                     setTimeout(function() {
-                                        term.cyan("Now using proxies...\n");
+
                                         term.green("-------------------------------------\n");
                                         term.brightCyan("Made by: tear#9999\n");
                                     }, 2000);
