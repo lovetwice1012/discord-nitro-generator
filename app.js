@@ -233,7 +233,7 @@ function main() {
 
                                     console.clear();
                                     setTimeout(function() {
-                                        term.cyan("Now using proxies...\n");
+
                                         term.green("-------------------------------------\n");
                                         term.brightCyan("Made by: tear#9999\n");
                                     }, 2000);
