@@ -9,11 +9,11 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "axios": "",
         "colors": "",
         "console-menu": "",
         "express": "",
         "figlet": "",
-        "hookcord": "",
         "http": "",
         "line-reader": "",
         "node-fetch": "",
