@@ -7,8 +7,7 @@ const proxies = __dirname + "/proxies.txt";
 const express = require("express");
 const app = express();
 const http = require("http");
-const hookcord = require('hookcord');
-const Hook = new hookcord.Hook()
+const axios = require('axios')
 require("colors");
 
 var term = require("terminal-kit").terminal;
@@ -16,8 +15,7 @@ var proxyLine = 0;
 var proxyUrl = "";
 var working = [];
 var version = "v1.3.2";
-var id = ""
-var secret = "";
+var webhook = "ur webhook url here lol";
 var toMatch;
 // highest rate possible before the stress errors will start to occur
 const triesPerSecond = 1;
@@ -28,7 +26,7 @@ http.createServer((req, res) => {
             "running"
         );
     })
-    .listen(3001);
+    .listen(3003);
 
 app.get("/", (request, response) => {
     console.log(new Date() + ` Ping Received`);
@@ -40,7 +38,6 @@ console.log(figlet.textSync("Nitro Gen").green);
 console.log(figlet.textSync(version).blue);
 console.log(figlet.textSync("By: Tear").red);
 
-Hook.login(id, secret)
 
 generatecode = function() {
     let code = "";
@@ -93,24 +90,27 @@ checkCode = function(code) {
             return;
         }
         try {
+
+
+
+
             if (body.code == 200) {
                 term.brightGreen(`This code should work unless an error is posted below! https://discord.gift/${code}\n`);
-                Hook.setPayload({
+                axios.post(webhook, {
                     "embeds": [{
-                        "title": "Tear's Nitro Generator",
-                        "color": 15257231,
-                        "fields": [{
-                            "name": code,
-                            "value": "github/therealtear"
-                        }]
-                    }]
-                })
-                Hook.fire()
-                    .then(response_object => {})
-                    .catch(error => {
-                        throw error;
-                    })
+                        "color": 1127128,
+                        "author": {
+                            "name": `Tear's Nitro Generator`
+                        },
 
+                        "description": `Found working code: https://discord.gift/${code}`,
+                    }],
+                    "username": "github/therealtear"
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
                 console.log(JSON.stringify(body, null, 4));
                 working.push(`https://discord.gift/${code}`);
                 fs.writeFileSync(__dirname + '/codes.json', JSON.stringify(working, null, 4));
@@ -124,21 +124,7 @@ checkCode = function(code) {
                 term.brightYellow("Your being rate limited! switching...\n");
 
             } else {
-                Hook.setPayload({
-                    "embeds": [{
-                        "title": "Tear's Nitro Generator",
-                        "color": 15257231,
-                        "fields": [{
-                            "name": code,
-                            "value": "github/therealtear"
-                        }]
-                    }]
-                })
-                Hook.fire()
-                    .then(response_object => {})
-                    .catch(error => {
-                        throw error;
-                    })
+
                 term.brightRed(`discord.com/gifts/${code} is an invalid code!\n`);
             }
         } catch (error) {
@@ -158,6 +144,21 @@ checkCodeOffline = function(code) {
         try {
             if (body.code == 200) {
                 term.brightGreen(`This code should work unless an error is posted below! https://discord.gift/${code}\n`);
+                axios.post(webhook, {
+                    "embeds": [{
+                        "color": 1127128,
+                        "author": {
+                            "name": `Tear's Nitro Generator`
+                        },
+
+                        "description": `Found working code: https://discord.gift/${code}`,
+                    }],
+                    "username": "github/therealtear"
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
                 console.log(JSON.stringify(body, null, 4));
                 working.push(`https://discord.gift/${code}`);
                 fs.writeFileSync(__dirname + '/codes.json', JSON.stringify(working, null, 4));
