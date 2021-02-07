@@ -17,10 +17,11 @@ To get a local copy up and running follow these simple steps.
 
 Full detailed changelog can be viewed [here](https://github.com/therealtear/discord-nitro-generator/issues/25) latest changes will be listed below:
 
-+ General life clarity improvements in all files + new issues thread
++ Formatting
 
-+ Added option to autostop the program after finding a working code
++ Clean up
 
++ Add replit branch
 
 
 ### Installation on Windows
