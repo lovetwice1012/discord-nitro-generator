@@ -37,7 +37,9 @@ A: Only run a MAXIMUM of 1 nitro generator at a time using proxied requests and 
 
 Q: "My screen looks like this: 
 
-![Here](pics/issue2.png) What do I do?
+![Here](pics/issue2.png) 
+
+What do I do?
 
 A: Either go to https://proxyscrape.com/free-proxy-list or another proxy dumping site and download and add new proxies to proxies.txt or wait for the generator to scrape new ones, if you do not start recieving the normal "Invalid code" response then remove all proxies and add new ones.
 
