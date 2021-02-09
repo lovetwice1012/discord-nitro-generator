@@ -23,6 +23,19 @@ Full detailed changelog can be viewed [here](https://github.com/therealtear/disc
 
 + Add replit branch
 
+### QnA
+
+Q: "hrrrrrr it no worky"
+A: stfu and read the ENTIRE readme and check the closed issues before spamming my DMs and the server with a question that's already been answered 40 other times
+
+Q: "I'm running 50 instances simultaneously and its not working!!1! >:("
+A: Only run a MAXIMUM of 1 nitro generator at a time using proxied requests and 1 non-proxied request version at any point in time running more then one will cause proxy scrapper overlays and just rate limit each other causing the generator to run MUCH slower then normal! Don't be this guy: ![Here](pics/issue3.png)
+
+Q: "My screen looks like this: ![Here](pics/issue2.png) What do I do?
+A: Either go to https://proxyscrape.com/free-proxy-list or another proxy dumping site and download and add new proxies to proxies.txt or wait for the generator to scrape new ones, if you do not start recieving the normal "Invalid code" response then remove all proxies and add new ones.
+
+Q: "OMG THE FIRST STEP (npm i) MADE IT HAVE WARNING!!11!!!1! WHAT DO????? (pic related) ![Here](pics/issue1.png)
+A: Nothing! it's perfectly fine request just happens to no longer be maintained (meaning it is not recieving new updates) and nothing is wrong! :) Move on to the next step and enjoy.
 
 ### Installation on Windows
 
@@ -59,8 +72,8 @@ See the [open issues](https://github.com/therealtear/discord-nitro-generator/iss
 
 ## Proof Of Concept (Running generator for 24 hours straight)
 
-![Here](image0.png)
-![Here](image1.jpeg)
+![Here](pics/ss1.png)
+![Here](pics/ss2.jpeg)
 
 ## License
 
