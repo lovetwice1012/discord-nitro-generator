@@ -17,6 +17,8 @@ To get a local copy up and running follow these simple steps.
 
 Full detailed changelog can be viewed [here](https://github.com/therealtear/discord-nitro-generator/issues/25) latest changes will be listed below:
 
++ QnA readme improvement
+
 + Formatting
 
 + Clean up
