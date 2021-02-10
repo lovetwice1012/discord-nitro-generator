@@ -31,6 +31,9 @@ Q: "hrrrrrr it no worky"
 
 A: stfu and read the ENTIRE readme and check the closed issues before spamming my DMs and the server with a question that's already been answered 40 other times
 
+Q: "How long does it take?"
+
+A: Since I do not feel like writing an essay at 5am basically it's random, could take 20 minutes, could take 20 hours, depends on a lot of different factors such as how many valid codes are in Discord's DB at any given time, how many people are running the generator at the same time (barely effects odds but can cause proxy use overlapping) as well as your internet/PC reliability.
 
 Q: "I'm running 50 instances simultaneously and its not working!!1! >:("
 
