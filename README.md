@@ -109,3 +109,10 @@ This tool is for education/research purposes only. The author takes NO responsib
 
 tl;dr
 I'm not responsible if u use this illegally lol
+
+# Donations
+
+Feel free to donate if you like any of my projects and want to support me :)
+
+Monero: 441WXXbQe48PifR3mkWkK73rgnq1AKovKYSTpZFQAz76e88dKnhKt7q9Gxb6nhg7J9EKaTRXWWnVEL5DDQG41j4pGrkuawt
+Paypal: palpal.me/jacob69smith
